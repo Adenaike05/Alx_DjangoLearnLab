@@ -1,8 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head><title>Librarian Page</title></head>
-<body>
-    <h1>Welcome Librarian!</h1>
-    <p>This view is restricted to users with the Librarian role.</p>
-</body>
-</html>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Librarian Dashboard</title>
+    </head>
+    <body>
+        <h1>Librarian Dashboard</h1>
+        <p>Welcome, {{ user.username }}! You are logged in as a **{{ user_role }}**.</p>
+        <p>This content is only accessible to Librarians.</p>
+        <ul>
+            <li>Manage Books Inventory</li>
+            <li>Handle Borrowing Requests</li>
+            <li>Assist Members</li>
+        </ul>
+        <p><a href="{% url 'home' %}">Back to Home</a></p>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+    </body>
+    </html>
+    
