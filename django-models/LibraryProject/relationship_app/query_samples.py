@@ -1,15 +1,14 @@
 from relationship_app.models import Author, Book, Library, Librarian
 
-# Query all books by a specific author
+# 1. Query all books by a specific authordef get_books_by_author(author_name):
 def get_books_by_author(author_name):
     try:
         author = Author.objects.get(name=author_name)
-        books = author.books.all()
-        return books
+        return Book.objects.filter(author=author)
     except Author.DoesNotExist:
         return []
 
-# List all books in a library
+# 2. List all books in a library
 def list_books_in_library(library_name):
     try:
         library = Library.objects.get(name=library_name)
@@ -17,10 +16,12 @@ def list_books_in_library(library_name):
     except Library.DoesNotExist:
         return []
 
-# Retrieve the librarian for a library
+# 3. Retrieve the librarian for a library
 def get_librarian_for_library(library_name):
     try:
         library = Library.objects.get(name=library_name)
         return library.librarian
     except (Library.DoesNotExist, Librarian.DoesNotExist):
+        return None
+    except Librarian.DoesNotExist:
         return None
