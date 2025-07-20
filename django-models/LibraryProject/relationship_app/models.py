@@ -1,26 +1,28 @@
-from relationship_app.models import Author, Book, Library, Librarian
+from django.db import models
 
-# Query all books by a specific author
-def get_books_by_author(author_name):
-    try:
-        author = Author.objects.get(name=author_name)
-        books = Book.objects.filter(author=author)  # ✅ This line is required by the checker
-        return books
-    except Author.DoesNotExist:
-        return []
+class Author(models.Model):
+    name = models.CharField(max_length=100)
 
-# List all books in a library
-def list_books_in_library(library_name):
-    try:
-        library = Library.objects.get(name=library_name)
-        return library.books.all()
-    except Library.DoesNotExist:
-        return []
+    def __str__(self):
+        return self.name
+    
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
-# Retrieve the librarian for a library
-def get_librarian_for_library(library_name):
-    try:
-        library = Library.objects.get(name=library_name)
-        return library.librarian
-    except (Library.DoesNotExist, Librarian.DoesNotExist):
-        return None
+    def __str__(self):
+        return self.title
+
+class Library(models.Model):
+    name = models.CharField(max_length=100)
+    books = models.ManyToManyField(Book)
+
+    def __str__(self):
+        return self.name
+
+class Librarian(models.Model):
+    name = models.CharField(max_length=100)
+    library = models.OneToOneField(Library, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
