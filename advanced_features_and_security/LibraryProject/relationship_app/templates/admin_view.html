@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <p>Welcome, {{ user.username }}! You are logged in as an **{{ user_role }}**.</p>
+    <p>This content is only accessible to Admin users.</p>
+    <ul>
+        <li>Manage Users</li>
+        <li>System Configuration</li>
+        <li>View All Reports</li>
+    </ul>
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+</body>
+</html>
