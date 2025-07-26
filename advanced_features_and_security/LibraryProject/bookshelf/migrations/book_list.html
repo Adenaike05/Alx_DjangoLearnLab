@@ -1,0 +1,25 @@
+<!-- book_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+    <h2>Books</h2>
+
+    {% if form %}
+    <form method="get" action="{% url 'search_books' %}">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+    {% endif %}
+
+    <ul>
+        {% for book in books %}
+        <li>{{ book.title }}</li>
+        {% empty %}
+        <li>No books found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
