@@ -176,3 +176,4 @@ SECURE_HSTS_SECONDS = 31536000  # Enforce HTTPS for 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Applies to subdomains
 SECURE_HSTS_PRELOAD = True  # Allow browser preload
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
