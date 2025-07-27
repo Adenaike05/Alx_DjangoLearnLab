@@ -151,10 +151,15 @@ DEBUG = False
 
 SECURE_BROWSER_XSS_FILTER = True
 
+# SECURITY: Security-related response headers
 X_FRAME_OPTIONS = 'DENY'
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
+SECURE_BROWSER_XSS_FILTER = True  # Enable browser XSS filtering
+
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
+# SECURITY: Secure cookies for session and CSRF
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
@@ -162,3 +167,12 @@ SESSION_COOKIE_SECURE = True
 CSP_DEFAULT_SRC = ("'self'",)
 CSP_SCRIPT_SRC = ("'self'", 'https://cdn.jsdelivr.net')
 CSP_STYLE_SRC = ("'self'", 'https://cdn.jsdelivr.net')
+
+# SECURITY: Force HTTPS across all requests
+SECURE_SSL_REDIRECT = True
+
+# SECURITY: HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # Enforce HTTPS for 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Applies to subdomains
+SECURE_HSTS_PRELOAD = True  # Allow browser preload
+

@@ -1,8 +1,11 @@
 from django.apps import AppConfig
-from django.contrib.auth import get_user_model
 
 class AccountsConfig(AppConfig):
-    default_auto_field = "django.db.models.BigAutoField"
-    name = "accounts"
+    name = 'accounts'
 
-User = get_user_model()
+    def ready(self):
+        from django.contrib.auth import get_user_model
+        User = get_user_model()
+        # If you're importing signals or doing something with User, do it here
+        # Example:
+        # from . import signals
