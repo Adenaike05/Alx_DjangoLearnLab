@@ -1,46 +1,45 @@
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import generics
 from .models import Book
 from .serializers import BookSerializer
 
-# List all books
+# List all books – anyone can view, only authenticated users can edit
 class BookListView(generics.ListAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-# Retrieve a single book
+# Retrieve a single book – same rule as list
 class BookDetailView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
-# Create a new book
+# Create a new book – only authenticated users
 class BookCreateView(generics.CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        # Any custom logic before saving
         serializer.save()
 
 
-# Update an existing book
+# Update an existing book – only authenticated users
 class BookUpdateView(generics.UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_update(self, serializer):
-        # Any custom logic before updating
         serializer.save()
 
 
-# Delete an existing book
+# Delete an existing book – only authenticated users
 class BookDeleteView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
