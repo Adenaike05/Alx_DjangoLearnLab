@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "bookshelf.apps.BookshelfConfig",
-    "relationship_app"  
+    "relationship_app",
 ]
 
 MIDDLEWARE = [
@@ -127,10 +127,10 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Authentication redirect settings
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'list_books'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "list_books"
+LOGOUT_REDIRECT_URL = "login"
 
 # Optional: for static file use in login.html and register.html
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]

@@ -6,7 +6,7 @@ from django.utils import timezone
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
         if not email:
-            raise ValueError('Email is required')
+            raise ValueError("Email is required")
         email = self.normalize_email(email)
         user = self.model(username=username, email=email, **extra_fields)
         user.set_password(password)
@@ -21,10 +21,11 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
-    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+    profile_photo = models.ImageField(
+        upload_to="profile_photos/", null=True, blank=True
+    )
 
     objects = CustomUserManager()
 
     def __str__(self):
         return self.username
-

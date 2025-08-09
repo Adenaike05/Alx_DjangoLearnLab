@@ -14,14 +14,16 @@ CREATE TABLE book(
 Django ORM - Object Relational Mapper
 
 """
+
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     publication_year = models.IntegerField()
 
-
     def __str__(self):
         return f"{self.title} by {self.author} ({self.publication_year})"
+
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, username, email, password=None, **extra_fields):
@@ -41,13 +43,16 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
-    profile_photo = models.ImageField(upload_to='profile_photos/', null=True, blank=True)
+    profile_photo = models.ImageField(
+        upload_to="profile_photos/", null=True, blank=True
+    )
 
     objects = CustomUserManager()
 
     def __str__(self):
         return self.username
-    
+
+
 class Article(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()

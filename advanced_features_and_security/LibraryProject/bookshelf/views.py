@@ -1,28 +1,29 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import permission_required
-from .models import Book 
+from .models import Book
 from .forms import BookSearchForm
 from django.http import HttpResponse
 from .forms import ExampleForm
 
 
-
-@permission_required('bookshelf.can_view', raise_exception=True)
+@permission_required("bookshelf.can_view", raise_exception=True)
 def book_list(request):
     books = Book.objects.all()
-    return render(request, 'bookshelf/book_list.html', {'books': books})
+    return render(request, "bookshelf/book_list.html", {"books": books})
+
 
 def search_books(request):
     form = BookSearchForm(request.GET or None)
     books = Book.objects.none()
 
     if form.is_valid():
-        title = form.cleaned_data['title']
+        title = form.cleaned_data["title"]
         books = Book.objects.filter(title__icontains=title)
 
-    return render(request, 'bookshelf/book_list.html', {'form': form, 'books': books})
+    return render(request, "bookshelf/book_list.html", {"form": form, "books": books})
+
 
 def some_secure_view(request):
     response = HttpResponse("Secure Content")
-    response['Content-Security-Policy'] = "default-src 'self'"
+    response["Content-Security-Policy"] = "default-src 'self'"
     return response

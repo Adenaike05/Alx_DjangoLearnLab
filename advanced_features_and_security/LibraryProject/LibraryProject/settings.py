@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-#tso3m-k&%@!p67*5&mxl$39c%$6z4^ll**cf*4xu4fdr$dmgp
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com', 'localhost']
+ALLOWED_HOSTS = ["yourdomain.com", "www.yourdomain.com", "localhost"]
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bookshelf.apps.BookshelfConfig",
     "relationship_app",
-    "accounts", 
+    "accounts",
     "csp",
 ]
 
@@ -52,7 +52,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "csp.middleware.CSPMiddleware",
-
 ]
 
 ROOT_URLCONF = "LibraryProject.urls"
@@ -130,29 +129,29 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Authentication redirect settings
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'list_books'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "list_books"
+LOGOUT_REDIRECT_URL = "login"
 
 # Optional: for static file use in login.html and register.html
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = "accounts.CustomUser"
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = "accounts.CustomUser"
 
-AUTH_USER_MODEL = 'bookshelf.CustomUser'
+AUTH_USER_MODEL = "bookshelf.CustomUser"
 
 DEBUG = False
 
 SECURE_BROWSER_XSS_FILTER = True
 
 # SECURITY: Security-related response headers
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = "DENY"
 SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
 SECURE_BROWSER_XSS_FILTER = True  # Enable browser XSS filtering
 
@@ -165,8 +164,8 @@ SESSION_COOKIE_SECURE = True
 
 
 CSP_DEFAULT_SRC = ("'self'",)
-CSP_SCRIPT_SRC = ("'self'", 'https://cdn.jsdelivr.net')
-CSP_STYLE_SRC = ("'self'", 'https://cdn.jsdelivr.net')
+CSP_SCRIPT_SRC = ("'self'", "https://cdn.jsdelivr.net")
+CSP_STYLE_SRC = ("'self'", "https://cdn.jsdelivr.net")
 
 # SECURITY: Force HTTPS across all requests
 SECURE_SSL_REDIRECT = True
@@ -176,4 +175,4 @@ SECURE_HSTS_SECONDS = 31536000  # Enforce HTTPS for 1 year
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Applies to subdomains
 SECURE_HSTS_PRELOAD = True  # Allow browser preload
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
