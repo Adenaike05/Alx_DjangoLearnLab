@@ -26,6 +26,18 @@ A Django REST Framework API for managing books with role-based permissions.
 
 ## **Example Requests & Responses**
 
+## Filtering, Searching, and Ordering
+
+### Filtering
+Filter books by title, author, or publication_year:
+
+### Searching
+Search books by title or author:
+
+### Ordering
+Order books by title or publication_year:
+
+
 ### **1. Create a Book (Authenticated User)**
 **Request:**
 ```bash
