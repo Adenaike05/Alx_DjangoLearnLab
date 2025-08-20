@@ -128,3 +128,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 import os
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'templates')]
+
+# Templates already exist by default. Ensure DIRS includes a project-level templates dir if you use one.
+# Example:
+# TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]
+
+LOGIN_REDIRECT_URL = "profile"
+LOGOUT_REDIRECT_URL = "login"
+LOGIN_URL = "login"
+
+# Messages framework is enabled by default. Ensure context processors include 'messages' (default).
+# STATIC settings should already be present from your initial setup.
