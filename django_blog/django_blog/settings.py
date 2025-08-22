@@ -139,3 +139,6 @@ LOGIN_URL = "login"
 
 # Messages framework is enabled by default. Ensure context processors include 'messages' (default).
 # STATIC settings should already be present from your initial setup.
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"] 
